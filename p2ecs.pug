@@ -1,6 +1,15 @@
+input(name="attr_version" type="hidden" value="0.1")
+input.current-page(name="attr_current_page" type="hidden" value="1")
+
 .view
-    .page.page1
-        .row.row1
-            .section.section0 section 0
-        .row.row2 row 2
-        .row.row3 row 32
+    .tabs
+        each n in [1, 2, 3, 4]
+            label( class="tab tab" + n title="Page " + n )
+                input( name="attr_current_page" type="radio" value=n )
+                span.label= "Page " + n
+    .folio
+        .page.page1 
+            .content Page 1 Content
+        .page.page2 Page 2 Content
+        .page.page3 Page 3 Content
+        .page.page4 Page 4 Content
