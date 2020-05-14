@@ -1,0 +1,95 @@
+@import './src/scss/0-resets';
+@import './src/scss/1-variables';
+@import './src/scss/2-mixins';
+@import './src/scss/3-base';
+@import './src/scss/4-roll20';
+
+/*view*/
+.#{$s_}view {
+	display: grid;
+	grid: auto 1fr / auto;
+	grid-template-areas:
+		"tabs"
+		"folio";
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+//Controls formatting for active tab/sheet
+$tabGroup : "";
+$sheetGroup : "";
+@for $i from 1 through 4 {
+    $tabGroup: $tabGroup + "." + $s_ + "current-page[value=\"" +$i + "\"] ~ ." + $s_ + "view ." + $s_ + "tabs ." + $s_ + "tab" + $i;
+    $sheetGroup: $sheetGroup + "." + $s_ + "current-page[value=\"" +$i + "\"] ~ ." + $s_ + "view ." + $s_ + "folio ." + $s_ + "page" + $i;
+    @if $i < 4 {
+        $tabGroup: $tabGroup + ", ";
+        $sheetGroup: $sheetGroup + ", ";
+    }
+}
+
+#{$tabGroup} {
+    background: $tan;
+}
+
+#{$sheetGroup} {
+    transform: scale( 1 );
+}
+
+/*Tabs*/
+.#{$s_}tabs {
+	grid-area: tabs;
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: center;
+}
+
+.#{$s_}tab {
+	flex: 0;
+	white-space: pre;
+	display: grid;
+	grid-template-areas:
+		"label";
+	grid: 1fr / 1fr;
+	
+	input {
+    	display: none;
+    }
+    
+    label {
+    	grid-area: label;
+    }
+    
+    span {
+    	text-align: center;
+    }
+}
+
+/*Folio*/
+.#{$s_}folio {
+	grid-area: folio;
+	display: grid;
+	grid: 1fr / 1fr;
+	grid-template-areas:
+		"pages"
+}
+
+/*Pages*/
+.#{$s_}page {
+    @include hidden;
+	background: $tan;
+	color: $blue;
+	grid-area: pages;
+	padding: 2em;
+	
+	.#{$s_}content {
+        @include wip;
+	    position: relative;
+	    
+	    &:after {
+        	content: "Permission granted to photocopy for personal use only.";
+        	position: absolute;
+        	top: 100%;
+        	right: 0;
+        	text-align: right;
+	    }
+	}
+}

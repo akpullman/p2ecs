@@ -1,0 +1,100 @@
+* {
+  box-sizing: border-box;
+  /* taken from roll20 */
+  font-family: inherit;
+  /* taken from roll20 */
+  font-size: inherit;
+  line-height: 1.1;
+  margin: 0;
+  padding: 0;
+}
+
+label {
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+}
+
+textarea {
+  padding: 0;
+  margin: 0;
+}
+
+.charsheet {
+  padding: 0 !important;
+  font-size: 1rem;
+  line-height: 1.1;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.charsheet * {
+  font-size: 1em;
+}
+
+/*view*/
+.view {
+  display: grid;
+  grid: auto 1fr/auto;
+  grid-template-areas: "tabs" "folio";
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.current-page[value="1"] ~ .view .tabs .tab1, .current-page[value="2"] ~ .view .tabs .tab2, .current-page[value="3"] ~ .view .tabs .tab3, .current-page[value="4"] ~ .view .tabs .tab4 {
+  background: #e3dcd1;
+}
+
+.current-page[value="1"] ~ .view .folio .page1, .current-page[value="2"] ~ .view .folio .page2, .current-page[value="3"] ~ .view .folio .page3, .current-page[value="4"] ~ .view .folio .page4 {
+  transform: scale(1);
+}
+
+/*Tabs*/
+.tabs {
+  grid-area: tabs;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
+.tab {
+  flex: 0;
+  white-space: pre;
+  display: grid;
+  grid-template-areas: "label";
+  grid: 1fr/1fr;
+}
+.tab input {
+  display: none;
+}
+.tab label {
+  grid-area: label;
+}
+.tab span {
+  text-align: center;
+}
+
+/*Folio*/
+.folio {
+  grid-area: folio;
+  display: grid;
+  grid: 1fr/1fr;
+  grid-template-areas: "pages";
+}
+
+/*Pages*/
+.page {
+  transform: scale(0);
+  background: #e3dcd1;
+  color: #212d61;
+  grid-area: pages;
+  padding: 2em;
+}
+.page .content {
+  border: 1px solid red;
+  position: relative;
+}
+.page .content:after {
+  content: "Permission granted to photocopy for personal use only.";
+  position: absolute;
+  top: 100%;
+  right: 0;
+  text-align: right;
+}
