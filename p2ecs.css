@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Aclonica&display=swap");
 * {
   box-sizing: border-box;
   /* taken from roll20 */
@@ -10,48 +11,11 @@
 }
 
 label {
-  margin: 0;
-  padding: 0;
   font-weight: normal;
 }
 
-textarea {
-  padding: 0;
-  margin: 0;
-}
-
-.charsheet {
-  padding: 0 !important;
-  font-size: 1rem;
-  line-height: 1.1;
-  font-family: Arial, Helvetica, sans-serif;
-}
-.charsheet * {
-  font-size: 1em;
-}
-
-/*view*/
-.view {
-  display: grid;
-  grid: auto 1fr/auto;
-  grid-template-areas: "tabs" "folio";
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-.current-page[value="1"] ~ .view .tabs .tab1, .current-page[value="2"] ~ .view .tabs .tab2, .current-page[value="3"] ~ .view .tabs .tab3, .current-page[value="4"] ~ .view .tabs .tab4 {
-  background: #e3dcd1;
-}
-
-.current-page[value="1"] ~ .view .folio .page1, .current-page[value="2"] ~ .view .folio .page2, .current-page[value="3"] ~ .view .folio .page3, .current-page[value="4"] ~ .view .folio .page4 {
-  transform: scale(1);
-}
-
-/*Tabs*/
-.tabs {
-  grid-area: tabs;
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
+ul {
+  list-style-type: none;
 }
 
 .tab {
@@ -71,15 +35,6 @@ textarea {
   text-align: center;
 }
 
-/*Folio*/
-.folio {
-  grid-area: folio;
-  display: grid;
-  grid: 1fr/1fr;
-  grid-template-areas: "pages";
-}
-
-/*Pages*/
 .page {
   transform: scale(0);
   background: #e3dcd1;
@@ -88,7 +43,6 @@ textarea {
   padding: 2em;
 }
 .page .content {
-  border: 1px solid red;
   position: relative;
 }
 .page .content:after {
@@ -97,4 +51,118 @@ textarea {
   top: 100%;
   right: 0;
   text-align: right;
+}
+
+row {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.section {
+  display: grid;
+  flex: 1;
+}
+
+.view {
+  display: grid;
+  grid: auto 1fr/auto;
+  grid-template-areas: "tabs" "folio";
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.tabs {
+  grid-area: tabs;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
+.folio {
+  grid-area: folio;
+  display: grid;
+  grid: 1fr/1fr;
+  grid-template-areas: "pages";
+}
+
+.page1 {
+  padding: 2em;
+}
+
+.section0 {
+  border: 1px solid red;
+  grid: auto auto/auto auto;
+  grid-template-areas: "title title" "proficiency actions";
+}
+.section0 .header {
+  text-transform: uppercase;
+  text-decoration: underline;
+}
+.section0 .actions img {
+  height: 1em;
+  padding-right: 0.2em;
+  filter: invert(84%) sepia(15%) saturate(6365%) hue-rotate(211deg) brightness(86%) contrast(93%);
+}
+
+.charsheet {
+  padding: 0 !important;
+  font-size: 1rem;
+  line-height: 1.1;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.charsheet * {
+  font-size: 1em;
+}
+
+.current-page[value="1"] ~ .view .tabs .tab1, .current-page[value="2"] ~ .view .tabs .tab2, .current-page[value="3"] ~ .view .tabs .tab3, .current-page[value="4"] ~ .view .tabs .tab4 {
+  background: #e3dcd1;
+}
+
+.current-page[value="1"] ~ .view .folio .page1, .current-page[value="2"] ~ .view .folio .page2, .current-page[value="3"] ~ .view .folio .page3, .current-page[value="4"] ~ .view .folio .page4 {
+  transform: scale(1);
+}
+
+.title {
+  display: grid;
+  grid-area: title;
+  grid-template-areas: "logo" "sub-title";
+  place-items: center;
+  place-contents: center;
+}
+
+.logo {
+  grid-area: logo;
+  height: 4em;
+  margin: -1em;
+}
+
+.sub-title {
+  font-family: "Aclonica", sans-serif;
+  color: #551919;
+  font-size: 1.8em;
+  font-weight: 900;
+  line-height: 0.5em;
+  font-variant: small-caps;
+  letter-spacing: 0.1em;
+  grid-area: sub-title;
+  text-align: center;
+  margin-top: 0.2em;
+  margin-bottom: 0.4em;
+}
+
+.proficiency {
+  grid-area: proficiency;
+}
+
+.actions {
+  grid-area: actions;
+}
+
+.proficiency, .actions {
+  font-size: 0.8em;
+  letter-spacing: 0;
+  white-space: pre;
+}
+
+.row1 {
+  display: flex;
 }

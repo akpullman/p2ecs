@@ -1,3 +1,5 @@
+include src/pug/_1-variables.pug
+
 input(name="attr_version" type="hidden" value="0.1")
 input.current-page(name="attr_current_page" type="hidden" value="1")
 
@@ -9,7 +11,18 @@ input.current-page(name="attr_current_page" type="hidden" value="1")
                 span.label= "Page " + n
     .folio
         .page.page1 
-            .content Page 1 Content
+            .row.row1
+                .section.section0 Logo, Proficiency, Actions
+                .section.section1 Character Name, Player Name, Experience Points (XP)
+                .section.section2 Ancestry and Heritage, Background, Class, Size, Alignment, Traits, Deity
+                .section.section3 Level, Hero Points
+            .row.row2
+                .section.section4 Ability Scores, Class DC
+                .section.section5 Aremor Class, Saving Throws
+                .section.section6 hit Points, Perception
+            .row.row3
+                .section.section7 Speed, Melee Strikes, Ranged Strikes, Weapon Proficiencies
+                .section.section8 Skills
         .page.page2 Page 2 Content
         .page.page3 Page 3 Content
         .page.page4 Page 4 Content

@@ -1,0 +1,55 @@
+@import './1-variables';
+@import './5-mixins';
+
+//View
+.#{$s_}view {
+	display: grid;
+	grid: auto 1fr / auto;
+	grid-template-areas:
+		"tabs"
+		"folio";
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+//tabs container
+.#{$s_}tabs {
+	grid-area: tabs;
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: center;
+}
+
+
+//Folio
+.#{$s_}folio {
+	grid-area: folio;
+	display: grid;
+	grid: 1fr / 1fr;
+	grid-template-areas:
+		"pages"
+}
+
+//Page 1
+.#{$s_}page1 {
+    padding: 2em;
+}
+
+//Section 0
+.#{$s_}section0{
+    @include wip;
+    grid: auto auto / auto auto;
+    grid-template-areas:
+        "title title"
+        "proficiency actions";
+    
+        .header{
+            text-transform: uppercase;
+            text-decoration: underline;
+        }
+        
+        .actions img {
+            height: 1em;
+            padding-right: .2em;
+            filter: invert(84%) sepia(15%) saturate(6365%) hue-rotate(211deg) brightness(86%) contrast(93%);
+        }
+}

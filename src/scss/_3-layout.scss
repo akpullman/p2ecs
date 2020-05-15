@@ -1,0 +1,56 @@
+@import './1-variables';
+@import './5-mixins';
+
+//Tabs
+.#{$s_}tab {
+	flex: 0;
+	white-space: pre;
+	display: grid;
+	grid-template-areas:
+		"label";
+	grid: 1fr / 1fr;
+	
+	input {
+    	display: none;
+    }
+    
+    label {
+    	grid-area: label;
+    }
+    
+    span {
+    	text-align: center;
+    }
+}
+
+//Pages
+.#{$s_}page {
+    @include hidden;
+	background: $tan;
+	color: $blue;
+	grid-area: pages;
+	padding: 2em;
+	
+	.#{$s_}content {
+	    position: relative;
+	    
+	    &:after {
+        	content: "Permission granted to photocopy for personal use only.";
+        	position: absolute;
+        	top: 100%;
+        	right: 0;
+        	text-align: right;
+	    }
+	}
+}
+
+#{$s_}row {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+//Sections
+.#{$s_}section {
+    display: grid;
+    flex: 1;
+}
