@@ -1,0 +1,79 @@
+//View
+.#{$s_}view {
+	display: grid;
+	grid: auto 1fr / auto;
+	grid-template-areas:
+		"tabs"
+		"folio";
+}
+
+//tabs container
+.#{$s_}tabs {
+	grid-area: tabs;
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: center;
+}
+
+//Active Tab/Page Formatting
+$tabGroup : "";
+$sheetGroup : "";
+@for $i from 1 through 4 {
+    $tabGroup: $tabGroup + "input[name=attr_current_page][value=\"" + $i + "\"] ~ ." + $s_ + "view ." + $s_ + "tabs ." + $s_ + "tab" + $i;
+    $sheetGroup: $sheetGroup + "input[name=attr_current_page][value=\"" + $i + "\"] ~ ." + $s_ + "view ." + $s_ + "folio ." + $s_ + "page" + $i;
+    @if $i < 4 {
+        $tabGroup: $tabGroup + ", ";
+        $sheetGroup: $sheetGroup + ", ";
+    }
+}
+
+#{$tabGroup} {
+    background: $page_background_color;
+}
+
+#{$sheetGroup} {
+    transform: scale( 1 );
+}
+
+//Folio
+.#{$s_}folio {
+	background: $page_background_color;
+	color: $page_font_color;
+	display: grid;
+	grid-area: folio;
+	grid-template:
+		"pages" auto
+		/ auto;
+}
+
+//Page 1
+.#{$s_}page1 {
+    grid-template:
+        "row1" auto
+        "row2" auto
+        "row3" auto
+        / auto;
+}
+
+.#{$s_}section-0 {
+    grid-template:
+        "logo logo" auto
+        "proficiency action" auto
+        / auto auto;
+}
+
+.#{$s_}logo {
+    grid-area: logo;
+}
+
+.#{$s_}section-2 {
+    .#{$s_}sub-section {
+        display: flex;
+        
+        div {
+            flex: 1
+        }
+    }
+}
+
+//File End

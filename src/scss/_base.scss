@@ -1,0 +1,52 @@
+//- Colors
+//- TO DO, get variables for promintent colors on character sheets
+$page_background_color: tan;
+$page_font_color: blue;
+
+
+//- Variables
+$for_roll20: false;
+$s_: "";
+
+@if $for_roll20 {
+    $s_: "sheet-";
+}
+
+//- Mixins
+@mixin wip {
+    border: 1px solid red;
+}
+
+@mixin paper {
+	max-height: 11in;
+	max-width: 8.5in;
+}
+
+@mixin phone {
+	max-height: 480px;
+	max-width: 320px;
+}
+
+@mixin hidden {
+    transform: scale( 0 );
+}
+
+@mixin aclonica {
+    font-family: 'Aclonica', sans-serif;
+}
+
+//- Reset
+* {
+    box-sizing: border-box; /* taken from roll20 */
+    font-family: inherit; /* taken from roll20 */
+	font-size: inherit;
+	font-weight: normal;
+	line-height: 1.1;
+    margin: 0;
+    padding: 0;
+}
+
+//- Utilities
+ul {
+    list-style-type:none;
+}

@@ -1,7 +1,7 @@
-include src/pug/_1-variables.pug
+include src/pug/_base.pug
 
-input(name="attr_version" type="hidden" value="0.1")
-input.current-page(name="attr_current_page" type="hidden" value="1")
+input( type="hidden" name="attr_version" value="0.1" )
+input( type="hidden" name="attr_current_page" value="1" )
 
 .view
     .tabs
@@ -12,17 +12,59 @@ input.current-page(name="attr_current_page" type="hidden" value="1")
     .folio
         .page.page1 
             .row.row1
-                .section.section0 Logo, Proficiency, Actions
-                .section.section1 Character Name, Player Name, Experience Points (XP)
-                .section.section2 Ancestry and Heritage, Background, Class, Size, Alignment, Traits, Deity
-                .section.section3 Level, Hero Points
+                .section.section-0 
+                    .logo Logo
+                    .proficiency Proficiency
+                    .actions Actions
+                .section.section-1
+                    .character-name Character Name
+                    .player-name Player Name
+                    .experience-points Experience Points (XP)
+                .section.section-2 
+                    .ancestry-and-heritage Ancestry and Heritage
+                    .background Background
+                    .class Class
+                    .sub-section
+                        .size Size
+                        .alignment Alignment
+                        .traits Traits
+                    .deity Deity
+                .section.section-3
+                    .sub-section
+                        .level Level
+                    .sub-section 
+                        .hero-points Hero Points
             .row.row2
-                .section.section4 Ability Scores, Class DC
-                .section.section5 Aremor Class, Saving Throws
-                .section.section6 hit Points, Perception
+                .section.section-4 
+                    .sub-section.ability-scores
+                        h1 Ability Scores
+                    .sub-section.class-dc
+                        h1 Class DC
+                .section.section-5
+                    .sub-section.armor-class
+                        h1 Armor Class
+                    .sub-section.saving-throws
+                        h1 Saving Throws
+                .section.section-6 
+                    .sub-section.hit-points
+                        h1 hit Points
+                    .sub-section.perception
+                        h1 Perception
             .row.row3
-                .section.section7 Speed, Melee Strikes, Ranged Strikes, Weapon Proficiencies
-                .section.section8 Skills
+                .section.section-7 
+                    .sub-section.speed
+                        h1 Speed
+                    .sub-section.melee-strikes
+                        h1 Melee Strikes
+                    .sub-section.ranged-strikes
+                        h1 Ranged Strikes
+                    .sub-section.weapon-proficiencies
+                        h1 Weapon Proficiencies
+                .section.section-8 
+                    .sub-section.skills
+                        h1 Skills
+                    .sub-section.languages
+                        h1 Languages
         .page.page2 Page 2 Content
         .page.page3 Page 3 Content
         .page.page4 Page 4 Content

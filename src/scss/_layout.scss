@@ -1,0 +1,56 @@
+//Tabs
+.#{$s_}tab {
+	flex: 0;
+	white-space: pre;
+	display: grid;
+	grid-template-areas:
+		"label";
+	grid: 1fr / 1fr;
+	
+	input {
+    	display: none;
+    }
+    
+    label {
+    	grid-area: label;
+    }
+    
+    span {
+    	text-align: center;
+    }
+}
+
+//Pages
+.#{$s_}page {
+    @include hidden;
+	display: grid;
+	grid-area: pages;
+	margin: 2em;
+	position: relative;
+	    
+    &:after {
+    	content: "Permission granted to photocopy for personal use only.";
+    	position: absolute;
+    	top: 100%;
+    	right: 0;
+    	text-align: right;
+    }
+}
+
+.#{$s_}row {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+//Sections
+.#{$s_}section {
+    @include wip;
+    display: grid;
+    flex: auto;
+    min-width: 20%;
+}
+
+//Sub-Sections
+.#{$s_}sub-section {
+    @include wip;
+}

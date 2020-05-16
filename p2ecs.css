@@ -1,17 +1,13 @@
-@import url("https://fonts.googleapis.com/css2?family=Aclonica&display=swap");
 * {
   box-sizing: border-box;
   /* taken from roll20 */
   font-family: inherit;
   /* taken from roll20 */
   font-size: inherit;
+  font-weight: normal;
   line-height: 1.1;
   margin: 0;
   padding: 0;
-}
-
-label {
-  font-weight: normal;
 }
 
 ul {
@@ -37,15 +33,12 @@ ul {
 
 .page {
   transform: scale(0);
-  background: #e3dcd1;
-  color: #212d61;
+  display: grid;
   grid-area: pages;
-  padding: 2em;
-}
-.page .content {
+  margin: 2em;
   position: relative;
 }
-.page .content:after {
+.page:after {
   content: "Permission granted to photocopy for personal use only.";
   position: absolute;
   top: 100%;
@@ -53,21 +46,26 @@ ul {
   text-align: right;
 }
 
-row {
+.row {
   display: flex;
   flex-flow: row wrap;
 }
 
 .section {
+  border: 1px solid red;
   display: grid;
-  flex: 1;
+  flex: auto;
+  min-width: 20%;
+}
+
+.sub-section {
+  border: 1px solid red;
 }
 
 .view {
   display: grid;
   grid: auto 1fr/auto;
   grid-template-areas: "tabs" "folio";
-  font-family: Arial, Helvetica, sans-serif;
 }
 
 .tabs {
@@ -77,92 +75,37 @@ row {
   justify-content: center;
 }
 
-.folio {
-  grid-area: folio;
-  display: grid;
-  grid: 1fr/1fr;
-  grid-template-areas: "pages";
+input[name=attr_current_page][value="1"] ~ .view .tabs .tab1, input[name=attr_current_page][value="2"] ~ .view .tabs .tab2, input[name=attr_current_page][value="3"] ~ .view .tabs .tab3, input[name=attr_current_page][value="4"] ~ .view .tabs .tab4 {
+  background: tan;
 }
 
-.page1 {
-  padding: 2em;
-}
-
-.section0 {
-  border: 1px solid red;
-  grid: auto auto/auto auto;
-  grid-template-areas: "title title" "proficiency actions";
-}
-.section0 .header {
-  text-transform: uppercase;
-  text-decoration: underline;
-}
-.section0 .actions img {
-  height: 1em;
-  padding-right: 0.2em;
-  filter: invert(84%) sepia(15%) saturate(6365%) hue-rotate(211deg) brightness(86%) contrast(93%);
-}
-
-.charsheet {
-  padding: 0 !important;
-  font-size: 1rem;
-  line-height: 1.1;
-  font-family: Arial, Helvetica, sans-serif;
-}
-.charsheet * {
-  font-size: 1em;
-}
-
-.current-page[value="1"] ~ .view .tabs .tab1, .current-page[value="2"] ~ .view .tabs .tab2, .current-page[value="3"] ~ .view .tabs .tab3, .current-page[value="4"] ~ .view .tabs .tab4 {
-  background: #e3dcd1;
-}
-
-.current-page[value="1"] ~ .view .folio .page1, .current-page[value="2"] ~ .view .folio .page2, .current-page[value="3"] ~ .view .folio .page3, .current-page[value="4"] ~ .view .folio .page4 {
+input[name=attr_current_page][value="1"] ~ .view .folio .page1, input[name=attr_current_page][value="2"] ~ .view .folio .page2, input[name=attr_current_page][value="3"] ~ .view .folio .page3, input[name=attr_current_page][value="4"] ~ .view .folio .page4 {
   transform: scale(1);
 }
 
-.title {
+.folio {
+  background: tan;
+  color: blue;
   display: grid;
-  grid-area: title;
-  grid-template-areas: "logo" "sub-title";
-  place-items: center;
-  place-contents: center;
+  grid-area: folio;
+  grid-template: "pages" auto/auto;
+}
+
+.page1 {
+  grid-template: "row1" auto "row2" auto "row3" auto/auto;
+}
+
+.section-0 {
+  grid-template: "logo logo" auto "proficiency action" auto/auto auto;
 }
 
 .logo {
   grid-area: logo;
-  height: 4em;
-  margin: -1em;
 }
 
-.sub-title {
-  font-family: "Aclonica", sans-serif;
-  color: #551919;
-  font-size: 1.8em;
-  font-weight: 900;
-  line-height: 0.5em;
-  font-variant: small-caps;
-  letter-spacing: 0.1em;
-  grid-area: sub-title;
-  text-align: center;
-  margin-top: 0.2em;
-  margin-bottom: 0.4em;
-}
-
-.proficiency {
-  grid-area: proficiency;
-}
-
-.actions {
-  grid-area: actions;
-}
-
-.proficiency, .actions {
-  font-size: 0.8em;
-  letter-spacing: 0;
-  white-space: pre;
-}
-
-.row1 {
+.section-2 .sub-section {
   display: flex;
+}
+.section-2 .sub-section div {
+  flex: 1;
 }
