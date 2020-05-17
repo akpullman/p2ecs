@@ -18,31 +18,31 @@ label {
   margin: 0;
 }
 
-.sheet-view {
+.view {
   display: grid;
   font-family: Arial Narrow, Arial, sans-serif;
   grid: auto 1fr/auto;
   grid-template-areas: "tabs" "folio";
 }
 
-.sheet-tab {
+.tab {
   flex: 0;
   white-space: pre;
   display: grid;
   grid-template-areas: "label";
   grid: 1fr/1fr;
 }
-.sheet-tab input {
+.tab input {
   display: none;
 }
-.sheet-tab label {
+.tab label {
   grid-area: label;
 }
-.sheet-tab span {
+.tab span {
   text-align: center;
 }
 
-.sheet-folio {
+.folio {
   background: #EDE7E0;
   color: #292D4F;
   display: grid;
@@ -50,14 +50,14 @@ label {
   grid-template: "pages" auto/auto;
 }
 
-.sheet-page {
+.page {
   transform: scale(0);
   display: grid;
   grid-area: pages;
   margin: 2em;
   position: relative;
 }
-.sheet-page:after {
+.page:after {
   content: "Permission granted to photocopy for personal use only.";
   position: absolute;
   top: 100%;
@@ -65,13 +65,13 @@ label {
   text-align: right;
 }
 
-.sheet-row {
+.row {
   display: flex;
   flex-flow: row wrap;
   margin: 0.1rem 0;
 }
 
-.sheet-section {
+.section {
   display: grid;
   flex: 1;
   min-width: 20%;
@@ -79,10 +79,10 @@ label {
   margin: 0 0.1rem;
 }
 
-.sheet-sub-section {
+.sub-section {
   background: #9E5B40;
 }
-.sheet-sub-section h1 {
+.sub-section h1 {
   background: #292D4F;
   color: white;
   font-size: 1.5em;
@@ -92,7 +92,7 @@ label {
   text-align: center;
 }
 
-.sheet-field {
+.field {
   white-space: pre;
   background: white;
   padding: 0.5rem;
@@ -100,7 +100,7 @@ label {
   resize: both;
   border: 2px solid #9E5B40;
 }
-.sheet-field .sheet-content {
+.field .content {
   position: relative;
   overflow: hidden;
   padding-top: 1.1em;
@@ -108,13 +108,13 @@ label {
   height: 100%;
   width: 100%;
 }
-.sheet-field .sheet-content .sheet-label {
+.field .content .label {
   position: absolute;
   top: 0;
   left: 0;
   font-variant: small-caps;
 }
-.sheet-field .sheet-content textarea {
+.field .content textarea {
   width: 100%;
   height: 100%;
   resize: none;
@@ -122,58 +122,58 @@ label {
   border: none;
   height: 1em;
 }
-.sheet-field .sheet-content textarea:hover {
+.field .content textarea:hover {
   background: #F0F0F0;
 }
-.sheet-field .sheet-content textarea:focus {
+.field .content textarea:focus {
   background: #E0E0E0;
 }
-.sheet-field .sheet-content textarea:active {
+.field .content textarea:active {
   background: #D0D0D0;
 }
 
-.sheet-tabs {
+.tabs {
   grid-area: tabs;
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
 }
 
-input[name=attr_current_page][value="1"] ~ .sheet-view .sheet-tabs .sheet-tab1, input[name=attr_current_page][value="2"] ~ .sheet-view .sheet-tabs .sheet-tab2, input[name=attr_current_page][value="3"] ~ .sheet-view .sheet-tabs .sheet-tab3, input[name=attr_current_page][value="4"] ~ .sheet-view .sheet-tabs .sheet-tab4 {
+input[name=attr_current_page][value="1"] ~ .view .tabs .tab1, input[name=attr_current_page][value="2"] ~ .view .tabs .tab2, input[name=attr_current_page][value="3"] ~ .view .tabs .tab3, input[name=attr_current_page][value="4"] ~ .view .tabs .tab4 {
   background: #EDE7E0;
 }
 
-input[name=attr_current_page][value="1"] ~ .sheet-view .sheet-folio .sheet-page1, input[name=attr_current_page][value="2"] ~ .sheet-view .sheet-folio .sheet-page2, input[name=attr_current_page][value="3"] ~ .sheet-view .sheet-folio .sheet-page3, input[name=attr_current_page][value="4"] ~ .sheet-view .sheet-folio .sheet-page4 {
+input[name=attr_current_page][value="1"] ~ .view .folio .page1, input[name=attr_current_page][value="2"] ~ .view .folio .page2, input[name=attr_current_page][value="3"] ~ .view .folio .page3, input[name=attr_current_page][value="4"] ~ .view .folio .page4 {
   transform: scale(1);
 }
 
-.sheet-page1 {
+.page1 {
   grid-template: "row1" auto "row2" auto "row3" auto/auto;
 }
 
-.sheet-section-0 {
+.section-0 {
   grid-template: "logo logo" auto "proficiency action" auto/auto auto;
 }
 
-.sheet-logo {
+.logo {
   grid-area: logo;
 }
 
-.sheet-section-2 .sheet-sub-section {
+.section-2 .sub-section {
   display: flex;
   background: none;
 }
-.sheet-section-2 .sheet-sub-section .field {
+.section-2 .sub-section .field {
   flex: 1;
   margin: 0 0.1rem;
 }
-.sheet-section-2 .sheet-sub-section :first-child {
+.section-2 .sub-section :first-child {
   margin-left: 0;
 }
-.sheet-section-2 .sheet-sub-section :last-child {
+.section-2 .sub-section :last-child {
   margin-right: 0;
 }
 
-.sheet-section-3 {
+.section-3 {
   flex: 0;
 }
