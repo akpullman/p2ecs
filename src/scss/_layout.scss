@@ -1,11 +1,15 @@
 //View
 .#{$s_}view {
+    height: 11in;
+    width: 8in;
 	display: grid;
 	font-family: Arial Narrow, Arial, sans-serif;
+	font-size: .5em;
 	grid: auto 1fr / auto;
 	grid-template-areas:
 		"tabs"
 		"folio";
+	overflow: hidden;
 }
 
 //Tabs
@@ -39,6 +43,8 @@
 	grid-template:
 		"pages" auto
 		/ auto;
+	height: 100%;
+	width: 100%;
 }
 
 //Pages
@@ -56,12 +62,29 @@
     	right: 0;
     	text-align: right;
     }
+    
+    .row:first-child {
+        margin-top: 0;
+    }
+    
+    .row:last-child {
+        margin-bottom: 0;
+    }
 }
 
 .#{$s_}row {
     display: flex;
     flex-flow: row wrap;
     margin: .1rem 0;
+    padding: 0;
+    
+    .#{$s_}section:first-child {
+        margin-left: 0;
+    }
+    
+    .#{$s_}section:last-child {
+        margin-right: 0;
+    }
 }
 
 //Sections
@@ -76,6 +99,7 @@
 
 //Sub-Sections
 .#{$s_}sub-section {
+    @include wip1;
     background: $brown;
     
     h1 {
@@ -89,7 +113,9 @@
     }
 }
 
+//Field
 .#{$s_}field {
+    @include wip;
     white-space: pre;
     background: white;
     padding: .5rem;
@@ -101,8 +127,6 @@
         position: relative;
         overflow: hidden;
         padding-top: 1.1em;
-        padding-left: 2.8em;
-        height: 100%;
         width: 100%;
         
         .#{$s_}label {
@@ -118,7 +142,7 @@
             resize: none;
             white-space: pre;
             border: none;
-            height: 1em;
+            height: 1.1em;
             
             &:hover {
                 background: #F0F0F0;

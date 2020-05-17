@@ -17,7 +17,10 @@ $s_: "";
 
 //- Mixins
 @mixin wip {
-    border: 1px solid red;
+    border: 2px solid red;
+}
+@mixin wip1 {
+    border: 2px solid green;
 }
 
 @mixin paper {

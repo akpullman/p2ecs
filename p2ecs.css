@@ -19,10 +19,14 @@ label {
 }
 
 .view {
+  height: 11in;
+  width: 8in;
   display: grid;
   font-family: Arial Narrow, Arial, sans-serif;
+  font-size: 0.5em;
   grid: auto 1fr/auto;
   grid-template-areas: "tabs" "folio";
+  overflow: hidden;
 }
 
 .tab {
@@ -48,6 +52,8 @@ label {
   display: grid;
   grid-area: folio;
   grid-template: "pages" auto/auto;
+  height: 100%;
+  width: 100%;
 }
 
 .page {
@@ -64,11 +70,24 @@ label {
   right: 0;
   text-align: right;
 }
+.page .row:first-child {
+  margin-top: 0;
+}
+.page .row:last-child {
+  margin-bottom: 0;
+}
 
 .row {
   display: flex;
   flex-flow: row wrap;
   margin: 0.1rem 0;
+  padding: 0;
+}
+.row .section:first-child {
+  margin-left: 0;
+}
+.row .section:last-child {
+  margin-right: 0;
 }
 
 .section {
@@ -80,6 +99,7 @@ label {
 }
 
 .sub-section {
+  border: 2px solid green;
   background: #9E5B40;
 }
 .sub-section h1 {
@@ -93,6 +113,7 @@ label {
 }
 
 .field {
+  border: 2px solid red;
   white-space: pre;
   background: white;
   padding: 0.5rem;
@@ -104,8 +125,6 @@ label {
   position: relative;
   overflow: hidden;
   padding-top: 1.1em;
-  padding-left: 2.8em;
-  height: 100%;
   width: 100%;
 }
 .field .content .label {
@@ -120,7 +139,7 @@ label {
   resize: none;
   white-space: pre;
   border: none;
-  height: 1em;
+  height: 1.1em;
 }
 .field .content textarea:hover {
   background: #F0F0F0;
@@ -148,7 +167,7 @@ input[name=attr_current_page][value="1"] ~ .view .folio .page1, input[name=attr_
 }
 
 .page1 {
-  grid-template: "row1" auto "row2" auto "row3" auto/auto;
+  grid-template: "row1" 1fr "row2" 1fr "row3" 1fr/auto;
 }
 
 .section-0 {
