@@ -14,31 +14,35 @@ ul {
   list-style-type: none;
 }
 
-.view {
+label {
+  margin: 0;
+}
+
+.sheet-view {
   display: grid;
   font-family: Arial Narrow, Arial, sans-serif;
   grid: auto 1fr/auto;
   grid-template-areas: "tabs" "folio";
 }
 
-.tab {
+.sheet-tab {
   flex: 0;
   white-space: pre;
   display: grid;
   grid-template-areas: "label";
   grid: 1fr/1fr;
 }
-.tab input {
+.sheet-tab input {
   display: none;
 }
-.tab label {
+.sheet-tab label {
   grid-area: label;
 }
-.tab span {
+.sheet-tab span {
   text-align: center;
 }
 
-.folio {
+.sheet-folio {
   background: #EDE7E0;
   color: #292D4F;
   display: grid;
@@ -46,14 +50,14 @@ ul {
   grid-template: "pages" auto/auto;
 }
 
-.page {
+.sheet-page {
   transform: scale(0);
   display: grid;
   grid-area: pages;
   margin: 2em;
   position: relative;
 }
-.page:after {
+.sheet-page:after {
   content: "Permission granted to photocopy for personal use only.";
   position: absolute;
   top: 100%;
@@ -61,13 +65,13 @@ ul {
   text-align: right;
 }
 
-.row {
+.sheet-row {
   display: flex;
   flex-flow: row wrap;
   margin: 0.1rem 0;
 }
 
-.section {
+.sheet-section {
   display: grid;
   flex: 1;
   min-width: 20%;
@@ -75,10 +79,10 @@ ul {
   margin: 0 0.1rem;
 }
 
-.sub-section {
+.sheet-sub-section {
   background: #9E5B40;
 }
-.sub-section h1 {
+.sheet-sub-section h1 {
   background: #292D4F;
   color: white;
   font-size: 1.5em;
@@ -88,7 +92,7 @@ ul {
   text-align: center;
 }
 
-.field {
+.sheet-field {
   white-space: pre;
   background: white;
   padding: 0.5rem;
@@ -96,7 +100,7 @@ ul {
   resize: both;
   border: 2px solid #9E5B40;
 }
-.field .content {
+.sheet-field .sheet-content {
   position: relative;
   overflow: hidden;
   padding-top: 1.1em;
@@ -104,13 +108,13 @@ ul {
   height: 100%;
   width: 100%;
 }
-.field .content .label {
+.sheet-field .sheet-content .sheet-label {
   position: absolute;
   top: 0;
   left: 0;
   font-variant: small-caps;
 }
-.field .content textarea {
+.sheet-field .sheet-content textarea {
   width: 100%;
   height: 100%;
   resize: none;
@@ -118,58 +122,58 @@ ul {
   border: none;
   height: 1em;
 }
-.field .content textarea:hover {
+.sheet-field .sheet-content textarea:hover {
   background: #F0F0F0;
 }
-.field .content textarea:focus {
+.sheet-field .sheet-content textarea:focus {
   background: #E0E0E0;
 }
-.field .content textarea:active {
+.sheet-field .sheet-content textarea:active {
   background: #D0D0D0;
 }
 
-.tabs {
+.sheet-tabs {
   grid-area: tabs;
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
 }
 
-input[name=attr_current_page][value="1"] ~ .view .tabs .tab1, input[name=attr_current_page][value="2"] ~ .view .tabs .tab2, input[name=attr_current_page][value="3"] ~ .view .tabs .tab3, input[name=attr_current_page][value="4"] ~ .view .tabs .tab4 {
+input[name=attr_current_page][value="1"] ~ .sheet-view .sheet-tabs .sheet-tab1, input[name=attr_current_page][value="2"] ~ .sheet-view .sheet-tabs .sheet-tab2, input[name=attr_current_page][value="3"] ~ .sheet-view .sheet-tabs .sheet-tab3, input[name=attr_current_page][value="4"] ~ .sheet-view .sheet-tabs .sheet-tab4 {
   background: #EDE7E0;
 }
 
-input[name=attr_current_page][value="1"] ~ .view .folio .page1, input[name=attr_current_page][value="2"] ~ .view .folio .page2, input[name=attr_current_page][value="3"] ~ .view .folio .page3, input[name=attr_current_page][value="4"] ~ .view .folio .page4 {
+input[name=attr_current_page][value="1"] ~ .sheet-view .sheet-folio .sheet-page1, input[name=attr_current_page][value="2"] ~ .sheet-view .sheet-folio .sheet-page2, input[name=attr_current_page][value="3"] ~ .sheet-view .sheet-folio .sheet-page3, input[name=attr_current_page][value="4"] ~ .sheet-view .sheet-folio .sheet-page4 {
   transform: scale(1);
 }
 
-.page1 {
+.sheet-page1 {
   grid-template: "row1" auto "row2" auto "row3" auto/auto;
 }
 
-.section-0 {
+.sheet-section-0 {
   grid-template: "logo logo" auto "proficiency action" auto/auto auto;
 }
 
-.logo {
+.sheet-logo {
   grid-area: logo;
 }
 
-.section-2 .sub-section {
+.sheet-section-2 .sheet-sub-section {
   display: flex;
   background: none;
 }
-.section-2 .sub-section .field {
+.sheet-section-2 .sheet-sub-section .field {
   flex: 1;
   margin: 0 0.1rem;
 }
-.section-2 .sub-section :first-child {
+.sheet-section-2 .sheet-sub-section :first-child {
   margin-left: 0;
 }
-.section-2 .sub-section :last-child {
+.sheet-section-2 .sheet-sub-section :last-child {
   margin-right: 0;
 }
 
-.section-3 {
+.sheet-section-3 {
   flex: 0;
 }
