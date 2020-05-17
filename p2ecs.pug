@@ -15,56 +15,70 @@ input( type="hidden" name="attr_current_page" value="1" )
                 .section.section-0 
                     .logo Logo
                     .proficiency Proficiency
-                    .actions Actions
+                    .actions Action
                 .section.section-1
-                    .character-name Character Name
-                    .player-name Player Name
-                    .experience-points Experience Points (XP)
+                    +field( "character_name", "Character\nName" )
+                    +field( "player_name", "Player\nName" )
+                    +field( "experience_points", "Experience\nPoints (XP)")
                 .section.section-2 
-                    .ancestry-and-heritage Ancestry and Heritage
-                    .background Background
-                    .class Class
+                    +field( "ancestry_and_heritage", "Ancestry and Heritage" )
+                    +field( "background", "Background")
+                    +field( "class", "Class" )
                     .sub-section
-                        .size Size
-                        .alignment Alignment
-                        .traits Traits
-                    .deity Deity
+                        +field( "size", "Size" )
+                        +field( "alignment", "Alignment" )
+                        +field( "traits", "Traits" )
+                    +field( "deity", "Deity" )
                 .section.section-3
-                    .sub-section
-                        .level Level
-                    .sub-section 
-                        .hero-points Hero Points
+                    .sub-section.level
+                        h1 Level
+                        .content Contents
+                    .sub-section.hero-points 
+                        h1 Hero Points
+                        .content Contents
             .row.row2
                 .section.section-4 
                     .sub-section.ability-scores
                         h1 Ability Scores
+                        .content Contents
                     .sub-section.class-dc
                         h1 Class DC
+                        .content Contents
                 .section.section-5
                     .sub-section.armor-class
                         h1 Armor Class
+                        .content Contents
                     .sub-section.saving-throws
                         h1 Saving Throws
+                        .content Contents
                 .section.section-6 
                     .sub-section.hit-points
-                        h1 hit Points
+                        h1 Hit Points
+                        .content Contents
                     .sub-section.perception
                         h1 Perception
+                        .content Contents
             .row.row3
                 .section.section-7 
                     .sub-section.speed
                         h1 Speed
+                        .content Contents
                     .sub-section.melee-strikes
                         h1 Melee Strikes
+                        .content Contents
                     .sub-section.ranged-strikes
                         h1 Ranged Strikes
+                        .content Contents
                     .sub-section.weapon-proficiencies
                         h1 Weapon Proficiencies
+                        .content Contents
                 .section.section-8 
                     .sub-section.skills
                         h1 Skills
+                        .content Contents
                     .sub-section.languages
                         h1 Languages
+                        .content Contents
         .page.page2 Page 2 Content
         .page.page3 Page 3 Content
         .page.page4 Page 4 Content

@@ -1,7 +1,10 @@
 //- Colors
 //- TO DO, get variables for promintent colors on character sheets
-$page_background_color: tan;
-$page_font_color: blue;
+$blue_dark: #292D4F; //- Lucky Point 212d61;
+$brown: #9E5B40; //- Sepia 9a513e;
+$brown_dark: #5D1F1E; //- Red Oxide 531919;
+$brown_light: #E9D7AB; //- Beeswax ead8b0;
+$tan: #EDE7E0; //- Desert Storm efeae4;
 
 
 //- Variables
@@ -29,10 +32,6 @@ $s_: "";
 
 @mixin hidden {
     transform: scale( 0 );
-}
-
-@mixin aclonica {
-    font-family: 'Aclonica', sans-serif;
 }
 
 //- Reset

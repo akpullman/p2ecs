@@ -14,6 +14,13 @@ ul {
   list-style-type: none;
 }
 
+.view {
+  display: grid;
+  font-family: Arial Narrow, Arial, sans-serif;
+  grid: auto 1fr/auto;
+  grid-template-areas: "tabs" "folio";
+}
+
 .tab {
   flex: 0;
   white-space: pre;
@@ -29,6 +36,14 @@ ul {
 }
 .tab span {
   text-align: center;
+}
+
+.folio {
+  background: #EDE7E0;
+  color: #292D4F;
+  display: grid;
+  grid-area: folio;
+  grid-template: "pages" auto/auto;
 }
 
 .page {
@@ -49,23 +64,68 @@ ul {
 .row {
   display: flex;
   flex-flow: row wrap;
+  margin: 0.1rem 0;
 }
 
 .section {
-  border: 1px solid red;
   display: grid;
-  flex: auto;
+  flex: 1;
   min-width: 20%;
+  gap: 0.2rem;
+  margin: 0 0.1rem;
 }
 
 .sub-section {
-  border: 1px solid red;
+  background: #9E5B40;
+}
+.sub-section h1 {
+  background: #292D4F;
+  color: white;
+  font-size: 1.5em;
+  font-variant: small-caps;
+  font-weight: bold;
+  padding: 0.1rem;
+  text-align: center;
 }
 
-.view {
-  display: grid;
-  grid: auto 1fr/auto;
-  grid-template-areas: "tabs" "folio";
+.field {
+  white-space: pre;
+  background: white;
+  padding: 0.5rem;
+  overflow: hidden;
+  resize: both;
+  border: 2px solid #9E5B40;
+}
+.field .content {
+  position: relative;
+  overflow: hidden;
+  padding-top: 1.1em;
+  padding-left: 2.8em;
+  height: 100%;
+  width: 100%;
+}
+.field .content .label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-variant: small-caps;
+}
+.field .content textarea {
+  width: 100%;
+  height: 100%;
+  resize: none;
+  white-space: pre;
+  border: none;
+  height: 1em;
+}
+.field .content textarea:hover {
+  background: #F0F0F0;
+}
+.field .content textarea:focus {
+  background: #E0E0E0;
+}
+.field .content textarea:active {
+  background: #D0D0D0;
 }
 
 .tabs {
@@ -76,19 +136,11 @@ ul {
 }
 
 input[name=attr_current_page][value="1"] ~ .view .tabs .tab1, input[name=attr_current_page][value="2"] ~ .view .tabs .tab2, input[name=attr_current_page][value="3"] ~ .view .tabs .tab3, input[name=attr_current_page][value="4"] ~ .view .tabs .tab4 {
-  background: tan;
+  background: #EDE7E0;
 }
 
 input[name=attr_current_page][value="1"] ~ .view .folio .page1, input[name=attr_current_page][value="2"] ~ .view .folio .page2, input[name=attr_current_page][value="3"] ~ .view .folio .page3, input[name=attr_current_page][value="4"] ~ .view .folio .page4 {
   transform: scale(1);
-}
-
-.folio {
-  background: tan;
-  color: blue;
-  display: grid;
-  grid-area: folio;
-  grid-template: "pages" auto/auto;
 }
 
 .page1 {
@@ -105,7 +157,19 @@ input[name=attr_current_page][value="1"] ~ .view .folio .page1, input[name=attr_
 
 .section-2 .sub-section {
   display: flex;
+  background: none;
 }
-.section-2 .sub-section div {
+.section-2 .sub-section .field {
   flex: 1;
+  margin: 0 0.1rem;
+}
+.section-2 .sub-section :first-child {
+  margin-left: 0;
+}
+.section-2 .sub-section :last-child {
+  margin-right: 0;
+}
+
+.section-3 {
+  flex: 0;
 }
