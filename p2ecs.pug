@@ -6,79 +6,75 @@ input( type="hidden" name="attr_current_page" value="1" )
 .view
     .tabs
         each n in [1, 2, 3, 4]
-            label( class="tab tab" + n title="Page " + n )
+            label( class="tab tab-" + n title="Page " + n )
                 input( name="attr_current_page" type="radio" value=n )
                 span.label= "Page " + n
     .folio
-        .page.page1 
-            .row.row1
-                .section.section-0 
-                    .logo Logo
-                    .proficiency Proficiency
-                    .actions Action
-                .section.section-1
+        +page
+            +row
+                +section
+                    .logo
+                        img( src= logo alt="Pathfinder Logo"  )
+                        .subtext
+                            | Character
+                            br 
+                            | Sheet
+                    .proficiency
+                        h1 Proficiency
+                        ul
+                            li Untrained +0
+                            li Trained 2+Level
+                            li Expert 4+level
+                            li Master 6+Level
+                            li Legendary 8+Level
+                    .actions 
+                        h1 Action
+                        ul
+                            li 
+                                +icon( free_action, "Free Action", "Action, Free" )
+                            li 
+                                +icon( single_action, "Free Action Icon", "Action, Free" )
+                            li 
+                                +icon( two_action_activity, "Two Action Activity", "Activity, Two-Action" )
+                            li  
+                                +icon( three_action_activity, "Three Action Activity", "Activity, Three-Action" )
+                            li  
+                                +icon( reaction, "Reaction", "Reaction" )
+                +section
                     +field( "character_name", "Character\nName" )
                     +field( "player_name", "Player\nName" )
-                    +field( "experience_points", "Experience\nPoints (XP)")
-                .section.section-2 
-                    +field( "ancestry_and_heritage", "Ancestry and Heritage" )
-                    +field( "background", "Background")
-                    +field( "class", "Class" )
-                    .sub-section
-                        +field( "size", "Size" )
-                        +field( "alignment", "Alignment" )
-                        +field( "traits", "Traits" )
-                    +field( "deity", "Deity" )
-                .section.section-3
-                    .sub-section.level
-                        h1 Level
-                        .content Contents
-                    .sub-section.hero-points 
-                        h1 Hero Points
-                        .content Contents
-            .row.row2
-                .section.section-4 
-                    .sub-section.ability-scores
-                        h1 Ability Scores
-                        .content Contents
-                    .sub-section.class-dc
-                        h1 Class DC
-                        .content Contents
-                .section.section-5
-                    .sub-section.armor-class
-                        h1 Armor Class
-                        .content Contents
-                    .sub-section.saving-throws
-                        h1 Saving Throws
-                        .content Contents
-                .section.section-6 
-                    .sub-section.hit-points
-                        h1 Hit Points
-                        .content Contents
-                    .sub-section.perception
-                        h1 Perception
-                        .content Contents
-            .row.row3
-                .section.section-7 
-                    .sub-section.speed
-                        h1 Speed
-                        .content Contents
-                    .sub-section.melee-strikes
-                        h1 Melee Strikes
-                        .content Contents
-                    .sub-section.ranged-strikes
-                        h1 Ranged Strikes
-                        .content Contents
-                    .sub-section.weapon-proficiencies
-                        h1 Weapon Proficiencies
-                        .content Contents
-                .section.section-8 
-                    .sub-section.skills
-                        h1 Skills
-                        .content Contents
-                    .sub-section.languages
-                        h1 Languages
-                        .content Contents
-        .page.page2 Page 2 Content
-        .page.page3 Page 3 Content
-        .page.page4 Page 4 Content
+                    +input( "experience_points", "Experience\nPoints (XP)")
+                +section
+                    +input( "ancestry_and_heritage", "Ancestry and Heritage" )
+                    +input( "background", "Background")
+                    +input( "class", "Class" )
+                    +input( "size", "Size" )
+                    +input( "alignment", "Alignment" )
+                    +input( "deity", "Deity" )
+                    +input( "traits", "Traits" )
+                +section
+                    +fieldset( "Level" )
+                    +fieldset( "Hero Points" )
+            +row
+                +section
+                    +fieldset( "Ability Scores" )
+                    +fieldset( "Class DC" )
+                +section
+                    +fieldset( "Armor Class" )
+                    +fieldset( "Saving Throws" )
+                +section
+                    +fieldset( "Hit Points" )
+                    +fieldset( "Perception" )
+            +row
+                +section
+                    +fieldset( "Speed" )
+                    +fieldset( "Melee Strikes" )
+                    +fieldset( "Ranged Strikes" )
+                    +fieldset( "Weapon Proficiencies" )
+                +section
+                    +fieldset( "Skills" )
+                    +fieldset( "Languages" )
+        +page
+            +row
+        +page
+        +page

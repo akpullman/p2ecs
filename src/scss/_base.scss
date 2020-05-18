@@ -15,26 +15,35 @@ $s_: "";
     $s_: "sheet-";
 }
 
+$paper_height: 11in; //- 1056px
+$paper_width: 8.5in; //- 816px
+$phone_height: 480px; 
+$phone_width: 320px; 
+
 //- Mixins
+@mixin fit-to-paper {
+	max-height: $paper_height;
+	max-width: $paper_width;
+}
+
+@mixin fit-to-phone {
+	max-height: $phone_height;
+	max-width: $phone_width;
+}
+
+@mixin stretchy {
+    overflow: auto;
+    resize: both;
+}
+
+@mixin hidden {
+    transform: scale( 0 );
+}
 @mixin wip {
     border: 2px solid red;
 }
 @mixin wip1 {
     border: 2px solid green;
-}
-
-@mixin paper {
-	max-height: 11in;
-	max-width: 8.5in;
-}
-
-@mixin phone {
-	max-height: 480px;
-	max-width: 320px;
-}
-
-@mixin hidden {
-    transform: scale( 0 );
 }
 
 //- Reset

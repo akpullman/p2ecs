@@ -19,13 +19,10 @@ label {
 }
 
 .view {
-  height: 11in;
-  width: 8in;
   display: grid;
   font-family: Arial Narrow, Arial, sans-serif;
-  font-size: 0.5em;
-  grid: auto 1fr/auto;
-  grid-template-areas: "tabs" "folio";
+  font-size: 0.6em;
+  grid-template: "tabs" 0 "folio" 1fr/auto;
   overflow: hidden;
 }
 
@@ -60,8 +57,14 @@ label {
   transform: scale(0);
   display: grid;
   grid-area: pages;
-  margin: 2em;
+  margin: 4em;
   position: relative;
+}
+.page .row:first-child {
+  margin-top: 0;
+}
+.page .row:last-child {
+  margin-bottom: 0;
 }
 .page:after {
   content: "Permission granted to photocopy for personal use only.";
@@ -69,12 +72,6 @@ label {
   top: 100%;
   right: 0;
   text-align: right;
-}
-.page .row:first-child {
-  margin-top: 0;
-}
-.page .row:last-child {
-  margin-bottom: 0;
 }
 
 .row {
@@ -93,16 +90,15 @@ label {
 .section {
   display: grid;
   flex: 1;
-  min-width: 20%;
   gap: 0.2rem;
   margin: 0 0.1rem;
+  height: 100%;
 }
 
-.sub-section {
-  border: 2px solid green;
+.fieldset {
   background: #9E5B40;
 }
-.sub-section h1 {
+.fieldset h1 {
   background: #292D4F;
   color: white;
   font-size: 1.5em;
@@ -112,43 +108,55 @@ label {
   text-align: center;
 }
 
-.field {
+.field, .input {
   border: 2px solid red;
-  white-space: pre;
   background: white;
-  padding: 0.5rem;
-  overflow: hidden;
-  resize: both;
   border: 2px solid #9E5B40;
+  overflow: hidden;
+  padding: 0.2rem;
+  resize: both;
+  white-space: pre;
+  font-size: 2em;
 }
-.field .content {
+.field.labeled .content, .input.labeled .content {
+  padding-top: 0.8em;
+}
+.field .content, .input .content {
   position: relative;
   overflow: hidden;
-  padding-top: 1.1em;
   width: 100%;
+  height: 100%;
 }
-.field .content .label {
+.field .content .label, .input .content .label {
   position: absolute;
   top: 0;
   left: 0;
   font-variant: small-caps;
+  font-size: 0.6em;
 }
-.field .content textarea {
-  width: 100%;
-  height: 100%;
+.field .content textarea, .field .content input, .input .content textarea, .input .content input {
+  border: none;
   resize: none;
   white-space: pre;
-  border: none;
-  height: 1.1em;
+  width: 100%;
 }
-.field .content textarea:hover {
+.field .content textarea:hover, .field .content input:hover, .input .content textarea:hover, .input .content input:hover {
   background: #F0F0F0;
 }
-.field .content textarea:focus {
+.field .content textarea:focus, .field .content input:focus, .input .content textarea:focus, .input .content input:focus {
   background: #E0E0E0;
 }
-.field .content textarea:active {
+.field .content textarea:active, .field .content input:active, .input .content textarea:active, .input .content input:active {
   background: #D0D0D0;
+}
+
+.input {
+  resize: horizontal;
+}
+
+.icon {
+  height: 1em;
+  padding-right: 0.1em;
 }
 
 .tabs {
@@ -158,41 +166,94 @@ label {
   justify-content: center;
 }
 
-input[name=attr_current_page][value="1"] ~ .view .tabs .tab1, input[name=attr_current_page][value="2"] ~ .view .tabs .tab2, input[name=attr_current_page][value="3"] ~ .view .tabs .tab3, input[name=attr_current_page][value="4"] ~ .view .tabs .tab4 {
+input[name=attr_current_page][value="1"] ~ .view .tabs .tab-1, input[name=attr_current_page][value="2"] ~ .view .tabs .tab-2, input[name=attr_current_page][value="3"] ~ .view .tabs .tab-3, input[name=attr_current_page][value="4"] ~ .view .tabs .tab-4 {
   background: #EDE7E0;
 }
 
-input[name=attr_current_page][value="1"] ~ .view .folio .page1, input[name=attr_current_page][value="2"] ~ .view .folio .page2, input[name=attr_current_page][value="3"] ~ .view .folio .page3, input[name=attr_current_page][value="4"] ~ .view .folio .page4 {
+input[name=attr_current_page][value="1"] ~ .view .folio .page-1, input[name=attr_current_page][value="2"] ~ .view .folio .page-2, input[name=attr_current_page][value="3"] ~ .view .folio .page-3, input[name=attr_current_page][value="4"] ~ .view .folio .page-4 {
   transform: scale(1);
 }
 
-.page1 {
-  grid-template: "row1" 1fr "row2" 1fr "row3" 1fr/auto;
+.page-1 {
+  grid-template: "row-1" auto "row-2" auto "row-3" auto/auto;
+}
+
+.row-1 {
+  border: 2px solid red;
+  grid-area: row-1;
 }
 
 .section-0 {
-  grid-template: "logo logo" auto "proficiency action" auto/auto auto;
+  flex: 0;
+  grid-template: "logo logo" auto "proficiency action" 1fr/1fr 1fr;
 }
-
-.logo {
+.section-0 .logo {
   grid-area: logo;
+  grid-template: "logo" "subtext";
+  margin-top: -1.2em;
+  margin-left: -1.2em;
+}
+.section-0 .logo img {
+  width: 100%;
+}
+.section-0 .logo .subtext {
+  grid-area: subtext;
+  text-align: center;
+  font-size: 2em;
+  font-weight: bold;
+  line-height: 1em;
+  margin-top: -0.6rem;
+}
+.section-0 h1 {
+  text-decoration: underline;
+  text-transform: uppercase;
+}
+.section-0 li {
+  white-space: pre;
 }
 
-.section-2 .sub-section {
-  display: flex;
-  background: none;
+.section-1 {
+  grid-template: "character-name" 1fr "player-name" 1fr "experience-points" auto/auto;
 }
-.section-2 .sub-section .field {
-  flex: 1;
-  margin: 0 0.1rem;
+.section-1 .field .content {
+  padding-left: 2em;
 }
-.section-2 .sub-section :first-child {
-  margin-left: 0;
+.section-1 .character-name textarea, .section-1 .player-name textarea {
+  height: 100%;
 }
-.section-2 .sub-section :last-child {
-  margin-right: 0;
+.section-1 .experience-points .content {
+  padding: 0 0 0 5em !important;
+}
+.section-1 .experience-points .content input {
+  font-size: 1.8em;
+}
+
+.section-2 {
+  grid-template: "ancestry-and-heritage ancestry-and-heritage ancestry-and-heritage" auto "background background background" auto "class class class" auto "size alignment deity" auto "traits traits traits" 1fr/auto auto auto;
+}
+.section-2 .ancestry-and-heritage {
+  grid-area: ancestry-and-heritage;
+}
+.section-2 .background {
+  grid-area: background;
+}
+.section-2 .class {
+  grid-area: class;
+}
+.section-2 .size {
+  grid-area: size;
+}
+.section-2 .alignment {
+  grid-area: alignment;
+}
+.section-2 .deity {
+  grid-area: deity;
+}
+.section-2 .traits {
+  grid-area: traits;
 }
 
 .section-3 {
   flex: 0;
+  grid-template: "level" 5em "hero-points" 5em/auto;
 }

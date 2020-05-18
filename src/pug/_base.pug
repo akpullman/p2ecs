@@ -5,10 +5,64 @@
 - let two_action_activity = "https://raw.githubusercontent.com/akpullman/roll20-character-sheets/master/Pathfinder%20Second%20Edition%20by%20Roll20/images/1x/Two%20Action.png";
 - let three_action_activity = "https://raw.githubusercontent.com/akpullman/roll20-character-sheets/master/Pathfinder%20Second%20Edition%20by%20Roll20/images/1x/Three%20Action.png";
 - let reaction = "https://raw.githubusercontent.com/akpullman/roll20-character-sheets/master/Pathfinder%20Second%20Edition%20by%20Roll20/images/1x/Reaction.png";
+- let page_number = 1;
+- let row_number = 0;
+- let section_index = 0;
 
 //Mixins
-mixin field(attribute, label )
-    label.field
+mixin page
+    - row_number = 1;
+    .page( class = "page-" + page_number++ )
+        if( block )
+            block
+        else
+            p Content
+
+mixin row
+    .row( class = "row-" + row_number++ )
+        if( block )
+            block
+        else
+            p Content
+
+mixin section
+    - let id_class = "section-" + section_index++;
+    .section( class= id_class )
+        if( block )
+            block
+        else
+            p Content
+            
+mixin input( attribute, label )
+    - let id_class = attribute.replace(/_/g, "-");
+    if( label )
+        - id_class = "labeled " + id_class
+    label.input( class = id_class )
         .content
-            textarea( name="attr_"+attribute )
-            span.label= label
+            input( type="text", name = "attr_" + attribute )
+            if( label )
+                span.label= label
+
+mixin field( attribute, label )
+    - let id_class = attribute.replace(/_/g, "-");
+    if( label )
+        - id_class = "labeled " + id_class
+    label.field( class = id_class )
+        .content
+            textarea( name = "attr_" + attribute )
+            if( label )
+                span.label= label
+            
+mixin fieldset( title )
+    .fieldset
+        h1= title
+        .content
+            if( block )
+                block
+            else
+                p Content
+
+mixin icon( src, alt, label )
+    img.icon( src=src alt=alt+" Icon: " )
+    if( label )
+        =label
